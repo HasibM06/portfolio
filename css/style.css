@@ -1222,20 +1222,20 @@ html[data-theme="light"] #projets .slideBox{
   margin: 26px auto 0;
 
   display: grid;
-  /* ✅ empêche le formulaire de devenir tout fin */
+
   grid-template-columns: minmax(560px, 1fr) minmax(420px, 520px);
   gap: 22px;
 
   align-items: stretch;
 }
 
-/* ✅ les deux cartes prennent la même hauteur */
+
 .contactLeft, .contactRight{ display: block; }
 .contactCard, .contactForm{
   height: 100%;
 }
 
-/* ✅ card glass propre (pas géant) */
+
 .contactCard, .contactForm{
   background: rgba(12,14,20,0.62);
   border: 1px solid rgba(255,255,255,0.12);
@@ -1261,14 +1261,14 @@ html[data-theme="light"] #projets .slideBox{
   font-weight: 900;
 }
 
-/* --------- DROITE (FORM) --------- */
+
 .formRow{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
-/* ✅ empêche les inputs de devenir ridicules */
+
 .contactForm input,
 .contactForm textarea{
   width: 100%;
@@ -1279,10 +1279,10 @@ html[data-theme="light"] #projets .slideBox{
 }
 
 .contactForm textarea{
-  min-height: 180px; /* comme ton screen */
+  min-height: 180px; 
 }
 
-/* ✅ bouton ne se casse plus en plusieurs lignes */
+
 .contactForm .btnPrimary{
   display: inline-flex;
   justify-content: center;
@@ -1296,7 +1296,7 @@ html[data-theme="light"] #projets .slideBox{
   padding: 0 22px;
 }
 
-/* ✅ si ton bouton est dans un conteneur trop étroit, on le remet large */
+
 .contactForm{
   overflow: hidden;
 }
@@ -1314,3 +1314,4 @@ html[data-theme="light"] #projets .slideBox{
     min-width: 0;
   }
 }
+
