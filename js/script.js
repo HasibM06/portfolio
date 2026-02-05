@@ -1,21 +1,22 @@
-// year
-document.getElementById("year").textContent = new Date().getFullYear();
+/* =========================
+   HELPERS
+========================= */
+const $ = (s, p = document) => p.querySelector(s);
+const $$ = (s, p = document) => Array.from(p.querySelectorAll(s));
 
 /* =========================
    THEME TOGGLE (dark / light)
 ========================= */
 const root = document.documentElement;
-const themeBtn = document.getElementById("themeBtn");
+const themeBtn = $("#themeBtn");
 
 function applyTheme(theme){
   root.setAttribute("data-theme", theme);
   if (themeBtn) themeBtn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
 }
 
-// au chargement
 applyTheme(localStorage.getItem("theme") || "dark");
 
-// au clic
 if (themeBtn){
   themeBtn.addEventListener("click", () => {
     const current = root.getAttribute("data-theme") || "dark";
@@ -25,78 +26,79 @@ if (themeBtn){
   });
 }
 
-
-/* ===== Smooth scroll ===== */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
+/* =========================
+   SMOOTH SCROLL
+========================= */
+$$('a[href^="#"]').forEach(a => {
   a.addEventListener("click", (e) => {
     const id = a.getAttribute("href");
-    const el = document.querySelector(id);
+    const el = $(id);
     if (!el) return;
     e.preventDefault();
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
 
-/* ===== Burger menu ===== */
-const burger = document.getElementById("burger");
-const mobileMenu = document.getElementById("mobileMenu");
+/* =========================
+   BURGER MENU
+========================= */
+const burger = $("#burger");
+const mobileMenu = $("#mobileMenu");
 
 function closeMenu(){
+  if (!mobileMenu || !burger) return;
   mobileMenu.classList.remove("open");
   mobileMenu.setAttribute("aria-hidden", "true");
   burger.setAttribute("aria-expanded", "false");
 }
 
-burger.addEventListener("click", () => {
-  const isOpen = mobileMenu.classList.toggle("open");
-  mobileMenu.setAttribute("aria-hidden", String(!isOpen));
-  burger.setAttribute("aria-expanded", String(isOpen));
-});
-document.querySelectorAll(".m-link").forEach(link => link.addEventListener("click", closeMenu));
+if (burger && mobileMenu){
+  burger.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("open");
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    burger.setAttribute("aria-expanded", String(isOpen));
+  });
 
-/* ===== Active nav item ===== */
-const navItems = document.querySelectorAll(".navItem");
+  $$(".m-link").forEach(link => link.addEventListener("click", closeMenu));
+}
+
+/* =========================
+   ACTIVE NAV ITEM
+========================= */
+const navItems = $$(".navItem");
 const ids = ["accueil","apropos","competences","projets","contact"];
 const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
 
-const navIO = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const id = entry.target.id;
-    navItems.forEach(l => l.classList.toggle("is-active", l.getAttribute("href") === `#${id}`));
-  });
-}, { threshold: 0.45 });
+if (navItems.length && sections.length){
+  const navIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      navItems.forEach(l => l.classList.toggle("is-active", l.getAttribute("href") === `#${id}`));
+    });
+  }, { threshold: 0.45 });
 
-sections.forEach(s => navIO.observe(s));
+  sections.forEach(s => navIO.observe(s));
+}
 
-/* ===== Reveal ===== */
-const revealEls = document.querySelectorAll(".reveal, .section");
-const revealIO = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("is-visible");
-  });
-}, { threshold: 0.12 });
+/* =========================
+   PROJECTS SLIDER
+========================= */
+const trackInner = $("#trackInner");
+const prev = $("#prev");
+const next = $("#next");
+const dotsWrap = $("#dots");
 
-revealEls.forEach(el => {
-  el.classList.add("reveal");
-  revealIO.observe(el);
-});
-
-/* ===== Projects slider ===== */
-const trackInner = document.getElementById("trackInner");
-const track = document.getElementById("track");
-const prev = document.getElementById("prev");
-const next = document.getElementById("next");
-const dotsWrap = document.getElementById("dots");
+let sliderIndex = 0;
 const slides = trackInner ? Array.from(trackInner.children) : [];
-let index = 0;
 
 function renderDots(){
   if (!dotsWrap) return;
   dotsWrap.innerHTML = "";
   slides.forEach((_, i) => {
     const b = document.createElement("button");
-    b.className = "dot" + (i === index ? " isOn" : "");
+    b.className = "dot" + (i === sliderIndex ? " isOn" : "");
+    b.type = "button";
     b.setAttribute("aria-label", `Aller au projet ${i+1}`);
     b.addEventListener("click", () => go(i));
     dotsWrap.appendChild(b);
@@ -105,100 +107,196 @@ function renderDots(){
 
 function go(i){
   if (!trackInner || slides.length === 0) return;
-  index = (i + slides.length) % slides.length;
-  trackInner.style.transform = `translateX(${-index * 100}%)`;
+  sliderIndex = (i + slides.length) % slides.length;
+  trackInner.style.transform = `translateX(${-sliderIndex * 100}%)`;
   renderDots();
 }
 
-if (prev && next) {
-  prev.addEventListener("click", () => go(index - 1));
-  next.addEventListener("click", () => go(index + 1));
-}
+if (prev) prev.addEventListener("click", () => go(sliderIndex - 1));
+if (next) next.addEventListener("click", () => go(sliderIndex + 1));
+
 renderDots();
 
-/* swipe projects */
-if (track) {
-  let startX = 0, dx = 0;
-  track.addEventListener("pointerdown", (e) => { startX = e.clientX; dx = 0; });
-  track.addEventListener("pointermove", (e) => { dx = e.clientX - startX; });
+/* swipe */
+const track = $("#track");
+if (track){
+  let startX = 0, dx = 0, down = false;
+
+  track.addEventListener("pointerdown", (e) => {
+    down = true;
+    startX = e.clientX;
+    dx = 0;
+  });
+
+  track.addEventListener("pointermove", (e) => {
+    if (!down) return;
+    dx = e.clientX - startX;
+  });
+
   track.addEventListener("pointerup", () => {
-    if (Math.abs(dx) > 60) go(index + (dx < 0 ? 1 : -1));
+    down = false;
+    if (Math.abs(dx) > 60) go(sliderIndex + (dx < 0 ? 1 : -1));
     startX = 0; dx = 0;
   });
 }
 
-/* ===== Skills carousel controls + drag ===== */
-const skillsTrack = document.getElementById("skillsTrack");
-const skillPrev = document.getElementById("skillPrev");
-const skillNext = document.getElementById("skillNext");
+/* =========================
+   MODAL PROJETS (Voir +)
+========================= */
+const modal = $("#projectModal");
+const modalBackdrop = $("#modalBackdrop");
+const modalClose = $("#modalClose");
 
-if (skillsTrack && skillPrev && skillNext) {
-  const scrollByAmount = () => Math.min(420, skillsTrack.clientWidth * 0.75);
+const modalImg = $("#modalImg");
+const modalTitle = $("#modalTitle");
+const modalType = $("#modalType");
+const modalDesc = $("#modalDesc");
+const modalLong = $("#modalLong");
+const modalTools = $("#modalTools");
+const modalProject = $("#modalProject");
 
-  skillPrev.addEventListener("click", () => {
-    skillsTrack.scrollBy({ left: -scrollByAmount(), behavior: "smooth" });
-  });
+function openModalFromCard(card){
+  if (!modal || !card) return;
 
-  skillNext.addEventListener("click", () => {
-    skillsTrack.scrollBy({ left: scrollByAmount(), behavior: "smooth" });
-  });
+  modal.classList.add("isOpen");
+  modal.setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
 
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
+  const img = card.dataset.img || "";
+  const title = card.dataset.title || "Projet";
+  const type = card.dataset.type || "";
+  const desc = card.dataset.desc || "";
+  const long = card.dataset.long || "";
+  const tools = (card.dataset.tools || "").split(",").map(s=>s.trim()).filter(Boolean);
+  const projectLink = card.dataset.project || "#";
 
-  skillsTrack.addEventListener("mousedown", (e) => {
-    isDown = true;
-    skillsTrack.classList.add("dragging");
-    startX = e.pageX - skillsTrack.offsetLeft;
-    scrollLeft = skillsTrack.scrollLeft;
-  });
+  if (modalImg){
+    modalImg.src = img;
+    modalImg.alt = title;
+  }
+  if (modalTitle) modalTitle.textContent = title;
+  if (modalType) modalType.textContent = type;
+  if (modalDesc) modalDesc.textContent = desc;
+  if (modalLong) modalLong.textContent = long;
 
-  window.addEventListener("mouseup", () => {
-    isDown = false;
-    skillsTrack.classList.remove("dragging");
-  });
+  if (modalTools){
+    modalTools.innerHTML = "";
+    tools.forEach(t => {
+      const span = document.createElement("span");
+      span.className = "toolPill";
+      span.textContent = t;
+      modalTools.appendChild(span);
+    });
+  }
 
-  skillsTrack.addEventListener("mouseleave", () => {
-    isDown = false;
-    skillsTrack.classList.remove("dragging");
-  });
-
-  skillsTrack.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - skillsTrack.offsetLeft;
-    const walk = (x - startX) * 1.2;
-    skillsTrack.scrollLeft = scrollLeft - walk;
-  });
+  if (modalProject) modalProject.href = projectLink;
 }
 
-/* ===== Copy email ===== */
-const copyBtn = document.getElementById("copyBtn");
-if (copyBtn) {
-  copyBtn.addEventListener("click", async () => {
-    const email = document.getElementById("email")?.textContent?.trim();
-    if (!email) return;
+function closeModal(){
+  if (!modal) return;
+  modal.classList.remove("isOpen");
+  modal.setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+}
+
+/* Event delegation: marche même si tu changes tes projets */
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".js-more");
+  if (!btn) return;
+
+  const card = btn.closest(".projectCard"); // IMPORTANT: doit exister dans l'HTML
+  openModalFromCard(card);
+});
+
+if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+if (modalClose) modalClose.addEventListener("click", closeModal);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
+
+/* =========================
+   COPY EMAIL (boutons Copier)
+========================= */
+$$(".copyBtn").forEach(btn => {
+  btn.addEventListener("click", async () => {
+    const text = btn.getAttribute("data-copy") || "";
     try {
-      await navigator.clipboard.writeText(email);
-      alert("Email copié !");
+      await navigator.clipboard.writeText(text);
+      btn.textContent = "Copié ✅";
+      setTimeout(() => (btn.textContent = "Copier"), 1200);
     } catch {
-      alert("Impossible de copier (autorisation navigateur).");
+      alert("Copie impossible — copie manuellement.");
+    }
+  });
+});
+
+/* =========================
+   CONTACT FORM (mailto)
+========================= */
+/* =========================
+   CONTACT (Formspree AJAX)
+   - Envoi direct vers ton Gmail via Formspree
+   - Pas de mailto / pas de redirection
+========================= */
+const contactForm = document.getElementById("contactForm");
+const formHint = document.getElementById("formHint");
+
+function setHint(msg, ok = true) {
+  if (!formHint) return;
+  formHint.textContent = msg;
+  formHint.style.opacity = "1";
+  formHint.style.color = ok ? "" : "rgba(255,120,120,.95)";
+}
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.textContent : "";
+
+    // UX: état "envoi"
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Envoi...";
+    }
+    setHint("Envoi en cours...");
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: contactForm.method || "POST",
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        contactForm.reset();
+        setHint("Message envoyé ✅ Merci !", true);
+      } else {
+        // Formspree renvoie parfois un JSON d'erreurs
+        let data = null;
+        try { data = await res.json(); } catch {}
+        const msg =
+          data?.errors?.map((er) => er.message).join(", ") ||
+          "Oups ! Une erreur est survenue. Réessaie.";
+        setHint(msg, false);
+      }
+    } catch (err) {
+      setHint("Erreur réseau. Vérifie ta connexion et réessaie.", false);
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText || "Envoyer le message →";
+      }
     }
   });
 }
 
-/* ===== Form demo ===== */
-const form = document.getElementById("contactForm");
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Message prêt (formulaire démo). On peut le brancher ensuite.");
-  });
-}
 
-/* ===== Particles (discret) ===== */
-const canvas = document.getElementById("particles");
+/* =========================
+   PARTICLES (optionnel, safe)
+========================= */
+const canvas = $("#particles");
 const ctx = canvas?.getContext("2d");
 
 function resize(){
@@ -209,7 +307,7 @@ function resize(){
 window.addEventListener("resize", resize);
 resize();
 
-if (canvas && ctx) {
+if (canvas && ctx){
   const particles = [];
   const COUNT = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 22000));
 
@@ -259,193 +357,4 @@ if (canvas && ctx) {
     requestAnimationFrame(draw);
   }
   draw();
-}
-
-/* ===== ABOUT pipeline highlight ===== */
-const pipeline = document.getElementById("pipeline");
-if (pipeline){
-  const steps = Array.from(pipeline.querySelectorAll(".pipeStep"));
-  const setOn = (idx) => steps.forEach((s,i)=>s.classList.toggle("isOn", i===idx));
-
-  steps.forEach((btn, idx) => {
-    btn.addEventListener("mouseenter", () => setOn(idx));
-    btn.addEventListener("focus", () => setOn(idx));
-    btn.addEventListener("click", () => setOn(idx));
-  });
-}
-
-/* ===== ABOUT spotlight ===== */
-const aboutSection = document.querySelector(".about");
-if (aboutSection){
-  aboutSection.addEventListener("mousemove", (e) => {
-    const r = aboutSection.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width) * 100;
-    const y = ((e.clientY - r.top) / r.height) * 100;
-    aboutSection.style.setProperty("--sx", `${x}%`);
-    aboutSection.style.setProperty("--sy", `${y}%`);
-  });
-}
-
-// ====== FILTERS ======
-const filterBtns = document.querySelectorAll(".filterBtn");
-const cards = document.querySelectorAll(".projectCard");
-
-filterBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    filterBtns.forEach(b => b.classList.remove("isActive"));
-    btn.classList.add("isActive");
-
-    const f = btn.dataset.filter;
-    cards.forEach(card => {
-      const cat = card.dataset.cat;
-      card.style.display = (f === "all" || f === cat) ? "" : "none";
-    });
-  });
-});
-
-// ====== MODAL ======
-const modal = document.getElementById("projectModal");
-const modalBackdrop = document.getElementById("modalBackdrop");
-const modalClose = document.getElementById("modalClose");
-
-const modalImg = document.getElementById("modalImg");
-const modalTitle = document.getElementById("modalTitle");
-const modalType = document.getElementById("modalType");
-const modalDesc = document.getElementById("modalDesc");
-const modalLong = document.getElementById("modalLong");
-const modalTools = document.getElementById("modalTools");
-const modalDemo = document.getElementById("modalDemo");
-const modalCode = document.getElementById("modalCode");
-
-function openModal(card){
-  modal.classList.add("isOpen");
-  modal.setAttribute("aria-hidden","false");
-  document.body.style.overflow = "hidden";
-
-  modalImg.src = card.dataset.img;
-  modalTitle.textContent = card.dataset.title;
-  modalType.textContent = card.dataset.type;
-  modalDesc.textContent = card.dataset.desc;
-  modalLong.textContent = card.dataset.long;
-
-  // tools
-  modalTools.innerHTML = "";
-  (card.dataset.tools || "").split(",").map(s => s.trim()).filter(Boolean).forEach(t => {
-    const span = document.createElement("span");
-    span.className = "toolPill";
-    span.textContent = t;
-    modalTools.appendChild(span);
-  });
-
-  // links
-  modalDemo.href = card.dataset.demo || "#";
-
-  // code : seulement si dev + lien présent
-  const isDev = card.dataset.cat === "dev";
-  const codeLink = (card.dataset.code || "").trim();
-  if(isDev && codeLink){
-    modalCode.style.display = "inline-flex";
-    modalCode.href = codeLink;
-  }else{
-    modalCode.style.display = "none";
-  }
-}
-
-function closeModal(){
-  modal.classList.remove("isOpen");
-  modal.setAttribute("aria-hidden","true");
-  document.body.style.overflow = "";
-}
-
-document.querySelectorAll(".js-more").forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    const card = e.target.closest(".projectCard");
-    openModal(card);
-  });
-});
-
-modalBackdrop.addEventListener("click", closeModal);
-modalClose.addEventListener("click", closeModal);
-document.addEventListener("keydown", (e) => {
-  if(e.key === "Escape") closeModal();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const slides = document.querySelectorAll(".projectSlide");
-  const prev = document.getElementById("prev");
-  const next = document.getElementById("next");
-  const dotsContainer = document.querySelector(".sliderDots");
-
-  console.log("SLIDES TROUVÉS :", slides.length);
-
-  if (slides.length < 2) {
-    console.error("⚠️ Il faut au moins 2 .projectSlide");
-    return;
-  }
-
-  let index = 0;
-
-  // dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement("button");
-    if (i === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => goTo(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = dotsContainer.querySelectorAll("button");
-
-  function goTo(i) {
-    slides[index].classList.remove("active");
-    dots[index].classList.remove("active");
-
-    index = i;
-
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
-  }
-
-  next.addEventListener("click", () => {
-    goTo((index + 1) % slides.length);
-  });
-
-  prev.addEventListener("click", () => {
-    goTo((index - 1 + slides.length) % slides.length);
-  });
-
-});
-
-// COPY EMAIL
-document.querySelectorAll(".copyBtn").forEach(btn => {
-  btn.addEventListener("click", async () => {
-    const text = btn.getAttribute("data-copy") || "";
-    try {
-      await navigator.clipboard.writeText(text);
-      btn.textContent = "Copié ✅";
-      setTimeout(() => (btn.textContent = "Copier"), 1200);
-    } catch {
-      alert("Copie impossible — essaye de sélectionner et copier manuellement.");
-    }
-  });
-});
-
-// CONTACT FORM (mailto)
-const contactForm = document.getElementById("contactForm");
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    if (!name || !email || !message) return;
-
-    const subject = encodeURIComponent(`Contact portfolio — ${name}`);
-    const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-
-    // Mets TON mail ici :
-    window.location.href = `mailto:TONMAIL@exemple.com?subject=${subject}&body=${body}`;
-  });
 }
