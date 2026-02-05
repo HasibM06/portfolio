@@ -1,13 +1,18 @@
+
+
+
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio – Hasib | Développeur Web</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Mohammad Hasib</title>
+  <meta name="description" content="Portfolio Développeur Web — Projets, compétences, contact." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+
   <!-- BACKGROUND -->
   <div class="bg" aria-hidden="true">
     <div class="bg-grid"></div>
@@ -17,338 +22,250 @@
     <div class="bg-noise"></div>
   </div>
 
-  <!-- HEADER -->
+  <!-- TOPBAR -->
   <header class="topbar">
     <div class="container topbar-inner">
-      <!-- LOGO -->
-      <a class="logoWrap" href="#accueil" aria-label="Accueil">
-        <img class="logoImg" src="assets/logo.png" alt="Logo ">
-        <span class="logoText"></span>
+      <a class="logoWrap" href="#accueil" aria-label="Retour à l'accueil">
+        <!-- Remplace le src par ton logo -->
+        <img class="logoImg" src="assets/logo.png" alt="Logo" />
       </a>
 
-      <!-- NAV (droite) -->
       <nav class="navTop" aria-label="Navigation principale">
-        <a class="navItem" href="#accueil">Accueil</a>
+        <a class="navItem is-active" href="#accueil">Accueil</a>
         <a class="navItem" href="#apropos">À propos</a>
         <a class="navItem" href="#competences">Compétences</a>
         <a class="navItem" href="#projets">Projets</a>
         <a class="navItem" href="#contact">Contact</a>
-        <button class="themeToggle" id="themeBtn" type="button" aria-label="Changer de thème" aria-pressed="false">
-  <span class="ttIcon ttSun" aria-hidden="true">☀</span>
-  <span class="ttTrack" aria-hidden="true">
-    <span class="ttThumb"></span>
-  </span>
-  <span class="ttIcon ttMoon" aria-hidden="true">🌙</span>
-</button>
 
-
+        <!-- THEME TOGGLE -->
+        <button id="themeBtn" class="themeToggle" type="button" aria-pressed="false" aria-label="Changer de thème">
+          <span class="ttIcon" aria-hidden="true">🌙</span>
+          <span class="ttTrack" aria-hidden="true"><span class="ttThumb"></span></span>
+          <span class="ttIcon" aria-hidden="true">☀️</span>
+        </button>
       </nav>
 
-      
-
-      <!-- Burger -->
-      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <!-- BURGER -->
+      <button id="burger" class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
 
-    <!-- Mobile menu -->
-    <div class="mobileMenu" id="mobileMenu" aria-hidden="true">
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="mobileMenu" aria-hidden="true">
       <div class="container mobileMenuInner">
         <a class="m-link" href="#accueil">Accueil</a>
         <a class="m-link" href="#apropos">À propos</a>
         <a class="m-link" href="#competences">Compétences</a>
         <a class="m-link" href="#projets">Projets</a>
         <a class="m-link" href="#contact">Contact</a>
+
+        <button id="themeBtnMobile" class="themeToggle" type="button" aria-pressed="false" aria-label="Changer de thème (mobile)" style="justify-content:center;">
+          <span class="ttIcon" aria-hidden="true">🌙</span>
+          <span class="ttTrack" aria-hidden="true"><span class="ttThumb"></span></span>
+          <span class="ttIcon" aria-hidden="true">☀️</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- ACCUEIL -->
-<section id="accueil" class="hero">
-  <div class="heroContainer">
+  <!-- HERO -->
+  <main>
+    <section id="accueil" class="hero">
+      <div class="heroContainer">
+        <div class="heroText">
+          <div class="heroBadge">Disponible pour un stage — Avril 2026</div>
 
-    <div class="heroText">
-      <span class="heroBadge">Recherche de stage · Avril 2026</span>
+          <h1>
+            Développeur Web <span>DevDI</span><br />
+            interfaces propres & performantes.
+          </h1>
 
-      <h1>
-        Développeur Web<br>
-        <span>Full-Stack</span>
-      </h1>
-
-      <p>
-        Étudiant en BUT MMI, je conçois des sites modernes,
-        performants et orientés utilisateur.
-      </p>
-
-      <div class="heroBtns">
-        <a href="#projets" class="btnPrimary">Voir mes projets</a>
-        <a href="assets/CV.pdf" class="btnGhost" download>Télécharger mon CV</a>
-      </div>
-    </div>
-
-    <div class="heroVisual">
-      <img src="assets/hero-dev.png" alt="Illustration développeur">
-    </div>
-
-  </div>
-</section>
-
-
-
-
-
-  <!-- A PROPOS -->
-<section id="apropos" class="aboutSection">
-  <div class="aboutBox">
-
-    <!-- ✅ FOND NOIR UNIQUEMENT ICI -->
-    <div class="aboutMain">
-      <h2 class="aboutTitle">Qui suis-je</h2>
-
-      <div class="aboutTop">
-        <!-- TEXTE GAUCHE -->
-        <div class="aboutText">
           <p>
-            Je m’appelle <strong>Mohammad Hasib</strong> et je me forme actuellement au développement web.
-            J’aime concevoir des sites clairs, structurés et fluides, où chaque choix a un sens
-            et où l’utilisateur comprend immédiatement comment naviguer.
+            Étudiant en BUT MMI, je conçois des sites modernes, structurés et fluides :
+            front-end (UI/UX, responsive, animations) et back-end (logique, données).
           </p>
-          <p>
-            J’accorde une grande importance à l’organisation du code et à une architecture propre.
-            Pour moi, un bon site n’est pas seulement esthétique : il doit être performant,
-            maintenable et capable d’évoluer sans devenir complexe ou fragile.
-          </p>
-          <p>
-            Je m’investis autant dans le front-end (interfaces, responsive, interactions) que dans le back-end
-            (logique serveur, données). Ce qui me motive : construire des sites utiles, vraiment utilisés.
-            Je suis dans une formation qui me permet de développer des compétences solides à la fois en développement web, en création numérique et en communication.
-          </p>
+
+          <div class="heroBtns">
+            <a class="btnPrimary" href="#projets">Voir mes projets</a>
+            <a class="btnGhost" href="#contact">Me contacter</a>
+          </div>
         </div>
 
-        <!-- CARTES DROITE -->
-        <div class="aboutCards">
-          <div class="flipCard">
-            <div class="flipInner">
-              <div class="flipFront">Comprendre</div>
-              <div class="flipBack">Analyser le besoin, la cible et les contraintes avant de coder.</div>
+        <div class="heroVisual">
+          <!-- Remplace par ton image (toi, illustration dev, etc.) -->
+          <img src="assets/hero-dev.png" alt="Illustration portfolio" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="apropos">
+      <div class="aboutBox">
+        <div class="aboutMain">
+          <h2 class="sectionHeading">À propos</h2>
+
+          <div class="aboutTop">
+            <div class="aboutText">
+              <p>
+                Je m’appelle Mohammad Hasib. Je suis en BUT MMI (Métiers du Multimédia et de l’Internet),
+                spécialisé Dev Web / DevDI. J’aime construire des interfaces propres et claires, avec une
+                architecture maintenable et une vraie logique produit.
+              </p>
+              <p>
+                Mon objectif : créer des sites utiles, rapides et agréables à utiliser, en combinant design,
+                communication et développement.
+              </p>
+            </div>
+
+            <div class="aboutCards">
+              <div class="flipCard">
+                <div class="flipInner">
+                  <div class="flipFront">Ce que je fais</div>
+                  <div class="flipBack">Front-end (UI responsive, animations), back-end (logique, données), intégration.</div>
+                </div>
+              </div>
+
+              <div class="flipCard">
+                <div class="flipInner">
+                  <div class="flipFront">Ce que j’aime</div>
+                  <div class="flipBack">Code propre, structure MVC, performance, accessibilité, détails UI.</div>
+                </div>
+              </div>
+
+              <div class="flipCard">
+                <div class="flipInner">
+                  <div class="flipFront">Objectif 2026</div>
+                  <div class="flipBack">Stage Dev Web (Avril 2026) + alternance ensuite, sur des projets concrets.</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="flipCard">
-            <div class="flipInner">
-              <div class="flipFront">Construire</div>
-              <div class="flipBack">Développer une interface propre, responsive et facile à maintenir.</div>
+          <!-- TIMELINE -->
+          <div class="aboutTimeline">
+            <div class="timeline">
+              <div class="tItem left">
+                <div class="tDot"></div>
+                <div class="tCard">
+                  <div class="tYear">2024</div>
+                  <h4>Découverte & premiers sites</h4>
+                  <p>Premiers projets web, bases HTML/CSS/JS, création numérique et communication.</p>
+                  <div class="tTags">
+                    <span>HTML/CSS</span><span>JS</span><span>Créa</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tItem right">
+                <div class="tDot"></div>
+                <div class="tCard">
+                  <div class="tYear">2025</div>
+                  <h4>Spécialisation Dev Web</h4>
+                  <p>Projets plus structurés, logique de données, MVC, et interfaces plus pro.</p>
+                  <div class="tTags">
+                    <span>PHP</span><span>MVC</span><span>UI</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tItem left">
+                <div class="tDot"></div>
+                <div class="tCard">
+                  <div class="tYear">2026</div>
+                  <h4>Stage & montée en niveau</h4>
+                  <p>Objectif : entreprise, projets réels, Git, production, code maintenable.</p>
+                  <div class="tTags">
+                    <span>Stage</span><span>Projets réels</span><span>Git</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="flipCard">
-            <div class="flipInner">
-              <div class="flipFront">Améliorer</div>
-              <div class="flipBack">Tester, optimiser et faire évoluer un projet dans le temps.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="competences" class="skillsSection">
+      <h2 class="sectionHeading">Compétences</h2>
+
+      <div class="container skillsGrid">
+        <article class="skillCard" data-accent="cyan">
+          <div class="skillCardHead">
+            <h3>Développement</h3>
+            <span class="globalPct">En cours</span>
+          </div>
+
+          <div class="skillList">
+            <div class="skillItem">
+              <div class="label">HTML / CSS</div><div class="pct">Bon</div>
+              <div class="bar"><i style="--w:85%"></i></div>
+            </div>
+
+            <div class="skillItem">
+              <div class="label">JavaScript</div><div class="pct">Intermédiaire</div>
+              <div class="bar"><i style="--w:70%"></i></div>
+            </div>
+
+            <div class="skillItem">
+              <div class="label">PHP / MVC</div><div class="pct">Intermédiaire</div>
+              <div class="bar"><i style="--w:65%"></i></div>
             </div>
           </div>
-        </div>
+        </article>
+
+        <article class="skillCard" data-accent="pink">
+          <div class="skillCardHead">
+            <h3>Design / UI</h3>
+            <span class="globalPct">Bon</span>
+          </div>
+
+          <div class="skillList">
+            <div class="skillItem">
+              <div class="label">Figma</div><div class="pct">Bon</div>
+              <div class="bar"><i style="--w:80%"></i></div>
+            </div>
+
+            <div class="skillItem">
+              <div class="label">UX / Wireframes</div><div class="pct">Intermédiaire</div>
+              <div class="bar"><i style="--w:68%"></i></div>
+            </div>
+
+            <div class="skillItem">
+              <div class="label">Création numérique</div><div class="pct">Bon</div>
+              <div class="bar"><i style="--w:78%"></i></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="skillCard" data-accent="white">
+          <div class="skillCardHead">
+            <h3>Organisation</h3>
+            <span class="globalPct">Bon</span>
+          </div>
+
+          <div class="skillList">
+            <div class="skillItem">
+              <div class="label">Travail en équipe</div><div class="pct">Bon</div>
+              <div class="bar"><i style="--w:75%"></i></div>
+            </div>
+
+            <div class="skillItem">
+              <div class="label">Autonomie</div><div class="pct">Bon</div>
+              <div class="bar"><i style="--w:80%"></i></div>
+            </div>
+
+            <div class="skillItem">
+              <div class="label">Rigueur</div><div class="pct">Bon</div>
+              <div class="bar"><i style="--w:82%"></i></div>
+            </div>
+          </div>
+        </article>
       </div>
-    </div>
-    <!-- ✅ FIN DU FOND NOIR -->
 
-    <!-- TIMELINE EN BAS (SANS FOND NOIR) -->
-    <div class="aboutTimeline">
-      <h3 class="sectionHeading">TIMELINE</h3>
-
-
-      <div class="timeline">
-        <div class="tItem right">
-          <span class="tDot"></span>
-          <div class="tCard">
-            <div class="tYear">2024</div>
-            <h4>Baccalauréat Général — Mathématiques & Physique</h4>
-            <p>Obtenu avec mention, Raisonnement logique et esprit d'analyse. Résolution de problème complexes.</p>
-            <div class="tTags"><span>Logique</span><span>Analyse</span><span>Rigueur</span></div>
-          </div>
-        </div>
-
-        <div class="tItem left">
-          <span class="tDot"></span>
-          <div class="tCard">
-            <div class="tYear">2025</div>
-            <h4>BUT 1 MMI — Bases web & projets</h4>
-            <p>Réalisation de mes premiers sites web, initiation au développement, à la communication digitale et à la création numérique. Exploration des bases du web, du design et de la conception de projets multimédias.</p>
-            <div class="tTags"><span>HTML/CSS</span><span>Projet</span><span>UX</span></div>
-          </div>
-        </div>
-
-        <div class="tItem right">
-          <span class="tDot"></span>
-          <div class="tCard">
-            <div class="tYear">2026</div>
-            <h4>BUT 2 MMI — Dev, design & communication</h4>
-            <p>Renforcement de mes compétences techniques et spécialisation en développement web. Approfondissement du front-end et du back-end, avec une approche plus structurée, orientée performance, logique et qualité du code.</p>
-            <div class="tTags"><span>JavaScript</span><span>PHP</span><span>Figma</span><span>Com</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
- 
-   
-
-
-
-
-  <!-- Spotlight layer (discret) -->
-  <div class="spotlight" aria-hidden="true"></div>
-</section>
-
-
-
-  <!-- COMPETENCES (CAROUSEL LOGOS) -->
-
-  <section id="competences" class="skillsSection">
-  <div class="container">
-    <h2 class="sectionHeading">Compétences</h2>
-
-    <div class="skillsGrid">
-      <!-- CARD 1 -->
-    <article class="skillCard" data-accent="pink">
-  <!-- HEADER DU BLOC -->
-  <div class="skillCardHead">
-    <h3>Création numérique</h3>
-    <span class="globalPct">60%</span>
-  </div>
-
-  <!-- LISTE DES COMPÉTENCES -->
-  <div class="skillList">
-
-    <div class="skillItem" style="--w:65%">
-      <span class="label">UI / UX</span>
-      <span class="pct">65%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:55%">
-      <span class="label">Figma</span>
-      <span class="pct">55%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:50%">
-      <span class="label">Branding</span>
-      <span class="pct">50%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:45%">
-      <span class="label">Montage</span>
-      <span class="pct">45%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:40%">
-      <span class="label">Motion</span>
-      <span class="pct">40%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-  </div>
-</article>
-
-
-
-      <!-- CARD 2 -->
-   <article class="skillCard" data-accent="cyan">
-  <div class="skillCardHead">
-    <h3>Développement web</h3>
-    <span class="globalPct">80%</span>
-  </div>
-
-  <div class="skillList">
-    <div class="skillItem" style="--w:85%">
-      <span class="label">HTML / CSS</span>
-      <span class="pct">85%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:78%">
-      <span class="label">JavaScript</span>
-      <span class="pct">78%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:80%">
-      <span class="label">PHP</span>
-      <span class="pct">80%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:70%">
-      <span class="label">MySQL</span>
-      <span class="pct">70%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:68%">
-      <span class="label">Git / GitHub</span>
-      <span class="pct">68%</span>
-      <div class="bar"><i></i></div>
-    </div>
-  </div>
-</article>
-
-  
-
-  
-
-
-
-      <!-- CARD 3 -->
-   <article class="skillCard" data-accent="white">
-  <div class="skillCardHead">
-    <h3>Communication</h3>
-    <span class="globalPct">65%</span>
-  </div>
-
-  <div class="skillList">
-    <div class="skillItem" style="--w:60%">
-      <span class="label">Stratégie</span>
-      <span class="pct">60%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:55%">
-      <span class="label">SEO</span>
-      <span class="pct">55%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:50%">
-      <span class="label">Rédaction</span>
-      <span class="pct">50%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:75%">
-      <span class="label">Anglais</span>
-      <span class="pct">75%</span>
-      <div class="bar"><i></i></div>
-    </div>
-
-    <div class="skillItem" style="--w:70%">
-      <span class="label">Gestion</span>
-      <span class="pct">70%</span>
-      <div class="bar"><i></i></div>
-    </div>
-  </div>
-</article>
-
-    
-
-    <!-- CAROUSEL -->
+       <!-- CAROUSEL -->
     <div class="toolsMarquee" aria-label="Outils et technologies">
       <div class="marqueeTrack">
         <!-- set 1 -->
@@ -424,176 +341,268 @@
   </div>
 </section>
 
-
- <section id="projets" class="projectsSection">
-
+    <!-- PROJECTS -->
+    <section id="projets" class="projectsSection">
   <h2 class="sectionHeading">Projets</h2>
 
-  <div class="projectSlider" id="track">
+  <div class="projectSlider">
+    <div id="track" class="track">
+      <div id="trackInner" class="projectTrack">
 
-    <!-- TRACK -->
-    <div class="projectTrack" id="trackInner">
+        <!-- SLIDE 1 -->
+        <article class="projectSlide">
+          <div class="slideBox projectCard"
+               data-title="Carte interactive — Baromètre écologique"
+               data-type="Universitaire"
+               data-img="assets/carte.png"
+               data-desc="Outil de visualisation interactive basé sur un baromètre du changement climatique."
+               data-long="Ce site permet d’explorer des données publiques et anonymisées sur les opinions et comportements écologiques en France. L’utilisateur sélectionne un département via la carte interactive, puis les graphiques se mettent à jour automatiquement pour faciliter la lecture et la comparaison."
+               data-tools="D3.js,JavaScript,HTML,CSS"
+               data-project="https://hasibm06.github.io/SAE303/"
+               data-code="">
+            <div class="slideImage">
+              <img src="assets/carte.png" alt="Carte interactive" />
+              <div class="slideOverlay">
+                <span class="slideOverlayTag">Hover</span>
+                <span class="slideOverlayText">Survole pour voir l’effet ✨</span>
+              </div>
+            </div>
 
-      <!-- PROJET 1 -->
-      <article class="projectSlide">
-        <div class="slideBox">
-          <div class="slideImage">
-            <img src="assets/carte.png" alt="">
-          </div>
+            <div class="slideText">
+              <span class="slideBadge">Universitaire</span>
+              <h3>Carte interactive</h3>
+              <p>
+                Visualisation interactive sur le climat : sélection d’un département + mise à jour automatique des graphiques.
+              </p>
 
-          <div class="slideText">
-            <span class="slideBadge">Universitaire</span>
-            <h3>Carte interactives</h3>
-            <p>Ce site est un outil de visualisation interactive basé sur un baromètre du changement climatique en France.
-Il permet d’explorer les opinions et comportements écologiques des citoyens à partir de données publiques et anonymisées.
-Grâce à une carte interactive des départements, l’utilisateur peut filtrer les données par territoire.
-Les graphiques se mettent alors à jour automatiquement pour faciliter la comparaison et la compréhension des résultats.
-L’objectif du site est de rendre des données complexes plus lisibles et accessibles grâce à l’interaction et à la visualisation</p>
-
-            <div class="slideActions">
-              <a href="https://hasibm06.github.io/SAE303/" class="btnPrimary" target="_blank">
-  Voir le site
-</a>
-
-              <button class="btnGhost js-more">Voir +</button>
+              <div class="slideActions">
+                <a class="btnPrimary" href="https://hasibm06.github.io/SAE303/" target="_blank" rel="noopener">
+                  Voir le projet
+                </a>
+                <button class="btnGhost js-more" type="button">Voir +</button>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- PROJET 2 -->
-      <article class="projectSlide">
-        <div class="slideBox">
-          <div class="slideImage">
-            <img src="assets/plateau.png" alt="">
-          </div>
+        <!-- SLIDE 2 -->
+        <article class="projectSlide">
+          <div class="slideBox projectCard"
+               data-title="Motus (PHP MVC)"
+               data-type="Universitaire"
+               data-img="assets/plateau.png"
+               data-desc="Jeu Motus en PHP (MVC + REST) avec données JSON et sessions."
+               data-long="Le joueur choisit la longueur du mot (4 à 7 lettres) et joue avec un clavier virtuel sans JavaScript. L’application est structurée en MVC, les données sont stockées en JSON, et l’état de partie est géré via sessions. Des badges sont générés avec GD selon les performances."
+               data-tools="PHP,MVC,JSON,Sessions,GD"
+               data-project="#"
+               data-code="">
+            <div class="slideImage">
+              <img src="assets/plateau.png" alt="Jeu Motus" />
+              <div class="slideOverlay">
+                <span class="slideOverlayTag">Hover</span>
+                <span class="slideOverlayText">Zoom + glow au survol</span>
+              </div>
+            </div>
 
-          <div class="slideText">
-            <span class="slideBadge">Universitaire</span>
-            <h3>Jeux Motus</h3>
-            <p>Mon projet est un jeu Motus développé en PHP, avec un thème centré sur la guerre et le vocabulaire militaire.
-Le joueur choisit la longueur du mot à deviner (entre 4 et 7 lettres) et interagit avec un clavier virtuel sans JavaScript.
-L’application repose sur une architecture MVC et un fonctionnement REST, avec les données stockées en JSON.
-Les parties, les scores et l’état du jeu sont gérés côté serveur via les sessions.
-J’ai également utilisé la bibliothèque GD pour générer dynamiquement des badges de récompense selon les performances du joueur.
-Le projet a été conçu pour être portable et installable sur tout serveur LAMP..</p>
+            <div class="slideText">
+              <span class="slideBadge">Universitaire</span>
+              <h3>Jeu Motus</h3>
+              <p>
+                Motus en PHP avec MVC, REST, JSON, sessions serveur et badges GD.
+              </p>
 
-            <div class="slideActions">
-              <a href="#" class="btnPrimary" target="_blank">Voir le projet</a>
-              <button class="btnGhost js-more">Voir +</button>
+              <div class="slideActions">
+                <a class="btnPrimary" href="#" target="_blank" rel="noopener">Voir le projet</a>
+                <button class="btnGhost js-more" type="button">Voir +</button>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- PROJET 3 -->
-      <article class="projectSlide">
-        <div class="slideBox">
-          <div class="slideImage">
-            <img src="assets/Tintin.png" alt="">
-          </div>
+        <!-- SLIDE 3 -->
+        <article class="projectSlide">
+          <div class="slideBox projectCard"
+               data-title="CMS Tintin (Jimdo)"
+               data-type="Universitaire"
+               data-img="assets/Tintin.png"
+               data-desc="CMS vitrine sur l’univers de Tintin : contenus + navigation claire."
+               data-long="Site vitrine pensé comme un mini CMS : présentation des personnages, albums emblématiques, rubriques thématiques, identité graphique fidèle. Objectif : structurer des contenus, organiser l’information et garder une navigation accessible."
+               data-tools="Jimdo,UI,Contenus,Organisation"
+               data-project="https://masuperbandedessinee.jimdofree.com/"
+               data-code="">
+            <div class="slideImage">
+              <img src="assets/Tintin.png" alt="CMS Tintin" />
+              <div class="slideOverlay">
+                <span class="slideOverlayTag">Hover</span>
+                <span class="slideOverlayText">Interaction + profondeur</span>
+              </div>
+            </div>
 
-          <div class="slideText">
-            <span class="slideBadge">Universitaire</span>
-            <h3>CMS Bande déssinée</h3>
-            <p>J’ai réalisé un CMS sur l’univers de Tintin avec Jimdo, pensé comme un site vitrine interactif.
-Le projet met en valeur l’œuvre d’Hergé à travers une présentation des personnages, des albums emblématiques et des rubriques thématiques, le tout dans une identité graphique fidèle à la bande dessinée.
-L’objectif était de structurer des contenus, gérer des pages dynamiques et proposer une navigation claire et accessible, tout en respectant l’esprit et l’esthétique de l’univers de Tintin.</p>
+            <div class="slideText">
+              <span class="slideBadge">Universitaire</span>
+              <h3>CMS Bande dessinée</h3>
+              <p>
+                Un site vitrine interactif sur Tintin, avec une structure claire et une identité fidèle.
+              </p>
 
-            <div class="slideActions">
-                 <a href="https://masuperbandedessinee.jimdofree.com/" class="btnPrimary" target="_blank">
-  Voir le site
-</a>
-              <button class="btnGhost js-more">Voir +</button>
+              <div class="slideActions">
+                <a class="btnPrimary" href="https://masuperbandedessinee.jimdofree.com/" target="_blank" rel="noopener">
+                  Voir le projet
+                </a>
+                <button class="btnGhost js-more" type="button">Voir +</button>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-    </div>
-  </div>
-
-  <!-- NAV -->
-  <div class="sliderNav">
-    <button id="prev" class="navBtn">‹</button>
-    <div id="dots"></div>
-    <button id="next" class="navBtn">›</button>
-  </div>
-
-</section>
-
-
-
-  <!-- CONTACT -->
- <section id="contact" class="contactSection">
-  <h2 class="sectionHeading">Contact</h2>
-  <p class="sectionSub">Pour un stage, une alternance, ou juste dire bonjour.</p>
-
-  <div class="contactGrid">
-
-    <!-- Colonne gauche : infos + liens -->
-    <div class="contactLeft">
-      <div class="contactCard">
-        <h3>Me joindre</h3>
-
-        <div class="contactLine">
-          <span class="contactLabel">Email</span>
-          <div class="contactValue">
-            <a class="contactLink" href="mailto:TONMAIL@exemple.com">TONMAIL@exemple.com</a>
-            <button class="copyBtn" type="button" data-copy="TONMAIL@exemple.com">Copier</button>
-          </div>
-        </div>
-
-        <div class="socialGrid">
-          <a class="socialBtn" href="https://www.linkedin.com/in/hasib-mohammad-450a83297/" target="_blank" rel="noopener">
-            <img src="assets/linkedin.jpg" alt="" class="socialIcon">
-            <span>LinkedIn</span>
-          </a>
-
-          <a class="socialBtn" href="https://github.com/HasibM06" target="_blank" rel="noopener">
-            <img src="assets/github.png" alt="" class="socialIcon">
-            <span>GitHub</span>
-          </a>
-        </div>
       </div>
     </div>
 
-    <!-- Colonne droite : formulaire -->
-    <div class="contactRight">
-      <form class="contactForm" id="contactForm">
-        <div class="formRow">
-          <div class="field">
-            <label for="name">Nom</label>
-            <input id="name" name="name" type="text" placeholder="Ton nom" required>
-          </div>
+    <div class="projectModal" id="projectModal" aria-hidden="true">
+  <div class="modalBackdrop" id="modalBackdrop"></div>
 
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="ton@email.com" required>
-          </div>
-        </div>
+  <div class="modalCard" role="dialog" aria-modal="true" aria-label="Détails projet">
+    <button class="modalClose" id="modalClose" type="button" aria-label="Fermer">✕</button>
 
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="7" placeholder="Ton message..." required></textarea>
-        </div>
-
-        <button class="btnPrimary" type="submit">Envoyer le message →</button>
-        <p class="formHint" id="formHint">Le formulaire s’ouvre via votre application mail (pour le moment).</p>
-      </form>
+    <div class="modalMedia">
+      <img id="modalImg" src="" alt="" />
     </div>
 
+    <div class="modalContent">
+      <div class="modalTop">
+        <h3 id="modalTitle">Titre</h3>
+        <span class="modalBadge" id="modalType">Type</span>
+      </div>
+
+      <p class="modalDesc" id="modalDesc"></p>
+      <p class="modalLong" id="modalLong"></p>
+
+      <div class="modalTools">
+        <h4>Technos</h4>
+        <div class="toolPills" id="modalTools"></div>
+      </div>
+
+      <div class="modalLinks">
+        <a class="btnPrimary" id="modalProject" href="#" target="_blank" rel="noopener">Voir le projet</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- NAV -->
+    <div class="sliderNav">
+      <button id="prev" class="navBtn" type="button" aria-label="Projet précédent">‹</button>
+      <div id="dots" class="dots" aria-label="Pagination projets"></div>
+      <button id="next" class="navBtn" type="button" aria-label="Projet suivant">›</button>
+    </div>
   </div>
 </section>
 
-   <footer class="siteFooter">
-  <div class="footerInner">
-    <p>© 2026 Mohammad Hasib</p>
-    <a href="mentions-legales.html" class="footerLink">Mentions légales</a>
-  </div>
-</footer>
 
+     
+
+    <!-- CONTACT -->
+    <section id="contact" class="contactSection">
+      <h2 class="sectionHeading">Contact</h2>
       
+      <div class="contactGrid">
+        <!-- LEFT CARD -->
+        <div class="contactCard">
+          <h3>Coordonnées</h3>
+
+          <div class="contactLine">
+            <span class="contactLabel">Email</span>
+            <div class="contactValue">
+              <a class="contactLink" href="mailto:mohammad.hasib206@gmail.com">mohammad.hasib206@gmail.com</a>
+              <button class="copyBtn" type="button" data-copy="mohammad.hasib206@gmail.com">Copier</button>
+            </div>
+          </div>
+
+          <div class="contactLine">
+            <span class="contactLabel">Réseaux</span>
+            <div class="socialGrid">
+              <a class="socialBtn" href="#" target="_blank" rel="noopener">
+                <img class="socialIcon" src="assets/linkedin.jpg" alt="" />
+                LinkedIn
+              </a>
+              <a class="socialBtn" href="#" target="_blank" rel="noopener">
+                <img class="socialIcon" src="assets/github.png" alt="" />
+                GitHub
+              </a>
+            </div>
+          </div>
+
+         
+        </div>
+
+        <!-- FORM -->
+    <form
+  id="contactForm"
+  action="https://formspree.io/f/mnjbangn"
+  method="POST"
+  class="contactForm"
+>
+  <div class="formRow">
+    <div class="field">
+      <label for="name">Nom</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Votre nom"
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="votre@email.com"
+        required
+      >
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="message">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      placeholder="Votre message..."
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit" class="btnPrimary">
+    Envoyer le message
+  </button>
+</form>
+
+
+  <!-- FOOTER -->
+  <footer class="siteFooter">
+    <div class="footerInner">
+      <p>© <span id="year">2026</span> Mohammad Hasib</p>
+      <a class="footerLink" href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </footer>
+
   <script src="js/script.js"></script>
+
+  <!-- mini sync thème mobile -->
+  <script>
+    const btnMobile = document.getElementById("themeBtnMobile");
+    const btnDesk = document.getElementById("themeBtn");
+    if(btnMobile && btnDesk){
+      btnMobile.addEventListener("click", () => btnDesk.click());
+    }
+  </script>
+
 </body>
 </html>
+
