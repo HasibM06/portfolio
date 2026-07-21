@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio - Mohammad Hasib</title>
+  <meta
+    name="description"
+    content="Portfolio de Mohammad Hasib, etudiant en BUT MMI specialise en developpement web : projets, competences et contact."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="logoWrap" href="#accueil" aria-label="Retour a l'accueil">
+        <img class="logoImg" src="assets/logo.png" alt="Logo Mohammad Hasib" />
+      </a>
+
+      <nav class="navTop" aria-label="Navigation principale">
+        <a class="navItem is-active" href="#accueil">Accueil</a>
+        <a class="navItem" href="#apropos">&Agrave; propos</a>
+        <a class="navItem" href="#competences">Comp&eacute;tences</a>
+        <a class="navItem" href="#projets">Projets</a>
+        <a class="navItem" href="#contact">Contact</a>
+
+        <button id="themeBtn" class="themeToggle" type="button" aria-pressed="false" aria-label="Changer de theme">
+          <span class="ttIcon" aria-hidden="true">&#9790;</span>
+          <span class="ttTrack" aria-hidden="true"><span class="ttThumb"></span></span>
+          <span class="ttIcon" aria-hidden="true">&#9728;</span>
+        </button>
+      </nav>
+
+      <button id="burger" class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="mobileMenu" aria-hidden="true">
+      <div class="container mobileMenuInner">
+        <a class="m-link" href="#accueil">Accueil</a>
+        <a class="m-link" href="#apropos">&Agrave; propos</a>
+        <a class="m-link" href="#competences">Comp&eacute;tences</a>
+        <a class="m-link" href="#projets">Projets</a>
+        <a class="m-link" href="#contact">Contact</a>
+
+        <button
+          id="themeBtnMobile"
+          class="themeToggle"
+          type="button"
+          aria-pressed="false"
+          aria-label="Changer de theme (mobile)"
+          style="justify-content:center;"
+        >
+          <span class="ttIcon" aria-hidden="true">&#9790;</span>
+          <span class="ttTrack" aria-hidden="true"><span class="ttThumb"></span></span>
+          <span class="ttIcon" aria-hidden="true">&#9728;</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="accueil" class="hero">
+      <div class="heroContainer">
+        <div class="heroText" data-reveal>
+          <div class="heroBadge"><span class="badgePulse"></span>Disponible pour alternance · 2026</div>
+
+          <h1>
+            D&eacute;veloppeur Web <span>DevDI</span><br />
+            interfaces propres & performantes.
+          </h1>
+
+          <p>
+            Etudiant en BUT MMI, je con&ccedil;ois des sites modernes, structures et fluides :
+            front-end (UI/UX, responsive, animations) et back-end (logique, donnees).
+          </p>
+
+          <div class="heroBtns">
+            <a class="btnPrimary" href="#projets">Voir mes projets</a>
+            <a class="btnGhost" href="assets/CV.pdf" download="CV-Mohammad-Hasib.pdf">Voir mon CV</a>
+          </div>
+        </div>
+
+        <div class="heroVisual" data-reveal data-reveal-delay="200">
+          <img src="assets/hero-dev.png" alt="Illustration portfolio" />
+        </div>
+      </div>
+    </section>
+
+    <section id="apropos">
+      <div class="aboutBox" data-reveal>
+        <div class="aboutMain">
+          <h2 class="sectionHeading">&Agrave; propos</h2>
+
+          <div class="aboutTop">
+            <div class="aboutText">
+              <p>
+                Je m'appelle <strong>Mohammad Hasib</strong>, etudiant en <strong>BUT MMI</strong> (Metiers du Multimedia et de l'Internet),
+                specialise en <strong>Dev Web / DevDI</strong>. Passionne par la conception d'interfaces soignees et performantes,
+                je construis des projets avec une vraie logique produit : code propre, structure solide, experience utilisateur pensee jusqu'au detail.
+              </p>
+              <p>
+                Actuellement en recherche active d'une <strong>alternance</strong> pour la rentree 2026, je veux integrer une equipe
+                ambitieuse ou je pourrai progresser sur des projets reels, apporter mes competences front-end et back-end,
+                et continuer a monter en niveau chaque jour.
+              </p>
+            </div>
+
+            <div class="aboutCards">
+              <div class="flipCard">
+                <div class="flipInner">
+                  <div class="flipFront">Ce que je fais</div>
+                  <div class="flipBack">Interfaces responsives, animations CSS/JS, integration back-end (PHP, MySQL), architecture MVC et deploiement de sites complets de A a Z.</div>
+                </div>
+              </div>
+
+              <div class="flipCard">
+                <div class="flipInner">
+                  <div class="flipFront">Ce que j'aime</div>
+                  <div class="flipBack">Code lisible et maintenable, performance, accessibilite, typographie soignee et les petits details UI qui font la difference.</div>
+                </div>
+              </div>
+
+              <div class="flipCard">
+                <div class="flipInner">
+                  <div class="flipFront">Objectif 2026</div>
+                  <div class="flipBack">Decrocher une alternance en developpement web pour mettre mes competences en pratique, progresser en equipe et viser un niveau senior.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="aboutTimeline">
+            <div class="timeline">
+              <div class="tItem left">
+                <div class="tDot"></div>
+                <div class="tCard">
+                  <div class="tYear">Avant le BUT</div>
+                  <h4>Bac specialites mathematiques et physique</h4>
+                  <p>Obtention du baccalaureat avec les specialites mathematiques et physique, qui m'ont apporte des bases solides en logique, analyse et rigueur.</p>
+                  <div class="tTags">
+                    <span>Mathematiques</span><span>Physique</span><span>Rigueur</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tItem right">
+                <div class="tDot"></div>
+                <div class="tCard">
+                  <div class="tYear">1re annee</div>
+                  <h4>BUT MMI</h4>
+                  <p>Premiere annee de BUT MMI avec acquisition d'experiences en developpement web, integration, design, UX/UI, communication et gestion de projets numeriques.</p>
+                  <div class="tTags">
+                    <span>Web</span><span>UI/UX</span><span>Communication</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tItem left">
+                <div class="tDot"></div>
+                <div class="tCard">
+                  <div class="tYear">Suite du parcours</div>
+                  <h4>Specialisation developpement et stage</h4>
+                  <p>Poursuite de la formation avec une specialisation plus forte en developpement web et un objectif de stage pour mettre mes competences en pratique sur des projets reels.</p>
+                  <div class="tTags">
+                    <span>Developpement</span><span>Stage</span><span>Progression</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="competences" class="skillsSection">
+      <h2 class="sectionHeading" data-reveal>Comp&eacute;tences</h2>
+
+      <div class="container skillsRadarSection" data-reveal>
+        <div class="skillsRadarSolo">
+          <canvas
+            id="skillsRadar"
+            class="skillsRadarCanvas"
+            width="520"
+            height="520"
+            aria-label="Radar de competences"
+          ></canvas>
+        </div>
+      </div>
+
+      <div class="toolsMarquee" aria-label="Outils et technologies">
+        <div class="marqueeTrack">
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" />
+            <span>HTML</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" />
+            <span>CSS</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            <span>JavaScript</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />
+            <span>PHP</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+            <span>MySQL</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+            <span>Git</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+            <span>GitHub</span>
+          </div>
+          <div class="tool">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
+            <span>Figma</span>
+          </div>
+
+          <div class="tool" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="" />
+            <span>HTML</span>
+          </div>
+          <div class="tool" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="" />
+            <span>CSS</span>
+          </div>
+          <div class="tool" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" />
+            <span>JavaScript</span>
+          </div>
+          <div class="tool" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="" />
+            <span>PHP</span>
+          </div>
+          <div class="tool" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" />
+            <span>MySQL</span>
+          </div>
+          <div class="tool" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" />
+            <span>Git</span>
+          </div>
+          <div class="tool" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" />
+            <span>GitHub</span>
+          </div>
+          <div class="tool" aria-hidden="true">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" />
+            <span>Figma</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projets" class="projectsSection">
+      <h2 class="sectionHeading" data-reveal>Projets</h2>
+
+      <div class="projectSlider">
+        <div id="track" class="track">
+          <div id="trackInner" class="projectTrack">
+            <article class="projectSlide">
+              <div
+                class="slideBox projectCard"
+                data-title="Carte interactive - Barometre ecologique"
+                data-type="Projet universitaire"
+                data-img="assets/carte.png"
+                data-desc="Visualisation de donnees avec carte interactive et mise a jour dynamique des graphiques."
+                data-long="Sur ce projet, j'ai travaille la visualisation de donnees et l'experience utilisateur. L'utilisateur selectionne un departement sur une carte de France, puis les graphiques se mettent a jour automatiquement pour faciliter la lecture, la comparaison et l'exploration des informations. Ce projet m'a permis de progresser sur D3.js, la structuration du code front-end et la presentation de donnees publiques de facon claire."
+                data-tools="D3.js,JavaScript,HTML,CSS"
+                data-project="https://hasibm06.github.io/SAE303/"
+                data-code=""
+              >
+                <div class="slideImage">
+                  <img src="assets/carte.png" alt="Capture du projet carte interactive" />
+                  <div class="slideOverlay">
+                    <span class="slideOverlayTag">Projet data</span>
+                    <span class="slideOverlayText">Carte interactive et graphiques relies en temps reel</span>
+                  </div>
+                </div>
+
+                <div class="slideText">
+                  <span class="slideBadge">Projet universitaire</span>
+                  <h3>Carte interactive</h3>
+                  <p>
+                    Une experience data interactive pour explorer un barometre ecologique par departement, avec mise a jour automatique des graphiques.
+                  </p>
+
+                  <div class="slideActions">
+                    <a class="btnPrimary" href="https://hasibm06.github.io/SAE303/" target="_blank" rel="noopener">
+                      Voir le projet
+                    </a>
+                    <button class="btnGhost js-more" type="button">Voir +</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="projectSlide">
+              <div
+                class="slideBox projectCard"
+                data-title="Motus en PHP MVC"
+                data-type="Projet universitaire"
+                data-img="assets/plateau.png"
+                data-desc="Jeu Motus en PHP avec architecture MVC, sessions et donnees JSON."
+                data-long="J'ai realise un jeu Motus en PHP en structurant le projet avec une architecture MVC. Le joueur choisit la longueur du mot, joue avec un clavier virtuel et la partie est geree cote serveur avec les sessions. Les donnees sont stockees en JSON et des badges sont generes selon les performances. Ce projet montre ma capacite a concevoir une logique metier claire, une structure maintenable et une interface coherente sans dependre uniquement de JavaScript."
+                data-tools="PHP,MVC,JSON,Sessions,GD"
+                data-project="#"
+                data-code=""
+              >
+                <div class="slideImage">
+                  <img src="assets/plateau.png" alt="Capture du jeu Motus" />
+                  <div class="slideOverlay">
+                    <span class="slideOverlayTag">Projet back-end</span>
+                    <span class="slideOverlayText">Architecture MVC, sessions et logique de jeu</span>
+                  </div>
+                </div>
+
+                <div class="slideText">
+                  <span class="slideBadge">Projet universitaire</span>
+                  <h3>Jeu Motus</h3>
+                  <p>
+                    Un jeu Motus en PHP qui met en avant la logique serveur, l'organisation MVC et la gestion de l'etat de partie.
+                  </p>
+
+                  <div class="slideActions">
+                    <a class="btnPrimary" href="#" target="_blank" rel="noopener">Voir le projet</a>
+                    <button class="btnGhost js-more" type="button">Voir +</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="projectSlide">
+              <div
+                class="slideBox projectCard"
+                data-title="CMS Tintin sur Jimdo"
+                data-type="Projet universitaire"
+                data-img="assets/Tintin.png"
+                data-desc="Site vitrine type mini CMS avec organisation de contenus et identite graphique coherente."
+                data-long="Ce projet etait centre sur la structuration de contenus et la clarte de navigation. J'ai organise les pages, les rubriques et la presentation des informations autour de l'univers de Tintin avec une identite graphique fidele. L'objectif etait de produire un site lisible, accessible et coherent, tout en soignant la hierarchie visuelle et le parcours utilisateur."
+                data-tools="Jimdo,UI,Contenus,Organisation"
+                data-project="https://masuperbandedessinee.jimdofree.com/"
+                data-code=""
+              >
+                <div class="slideImage">
+                  <img src="assets/Tintin.png" alt="Capture du site Tintin" />
+                  <div class="slideOverlay">
+                    <span class="slideOverlayTag">Projet contenu</span>
+                    <span class="slideOverlayText">Organisation, navigation et identite visuelle</span>
+                  </div>
+                </div>
+
+                <div class="slideText">
+                  <span class="slideBadge">Projet universitaire</span>
+                  <h3>CMS Bande dessinee</h3>
+                  <p>
+                    Un site vitrine autour de Tintin pense comme un mini CMS, avec une navigation claire et des contenus bien structures.
+                  </p>
+
+                  <div class="slideActions">
+                    <a class="btnPrimary" href="https://masuperbandedessinee.jimdofree.com/" target="_blank" rel="noopener">
+                      Voir le projet
+                    </a>
+                    <button class="btnGhost js-more" type="button">Voir +</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="projectSlide">
+              <div
+                class="slideBox projectCard"
+                data-title="ETCE Services - Site BTP"
+                data-type="Projet de stage"
+                data-img="assets/etce.png"
+                data-desc="Site vitrine pour ETCE Services, entreprise de BTP a Lognes, realise lors d'un stage."
+                data-long="Realise lors d'un stage, ce site vitrine presente l'entreprise ETCE Services, specialisee dans les travaux de renovation, maconnerie, electricite, plomberie et lots techniques en Ile-de-France. J'ai travaille sur l'integration des pages (Accueil, Services, Nos Engagements, Realisations, Contact), la mise en avant des prestations et des appels a l'action (devis, realisations), avec un design sobre et professionnel adapte au secteur du BTP. Ce projet m'a permis de me confronter a un vrai cahier des charges client et de livrer un site fonctionnel et deploye en ligne."
+                data-tools="HTML,CSS,JavaScript,Netlify,UI/UX"
+                data-project="https://etce.netlify.app/"
+                data-code=""
+              >
+                <div class="slideImage">
+                  <img src="assets/etce.png" alt="Capture d'ecran de la page d'accueil du site ETCE Services" />
+                  <div class="slideOverlay">
+                    <span class="slideOverlayTag">Projet de stage</span>
+                    <span class="slideOverlayText">Site vitrine BTP, deploye en production</span>
+                  </div>
+                </div>
+
+                <div class="slideText">
+                  <span class="slideBadge">Projet de stage</span>
+                  <h3>ETCE Services</h3>
+                  <p>
+                    Site vitrine pour une entreprise de BTP en Ile-de-France, realise pendant mon stage et mis en ligne sur Netlify.
+                  </p>
+
+                  <div class="slideActions">
+                    <a class="btnPrimary" href="https://etce.netlify.app/" target="_blank" rel="noopener">
+                      Voir le projet
+                    </a>
+                    <button class="btnGhost js-more" type="button">Voir +</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="projectSlide">
+              <div
+                class="slideBox projectCard"
+                data-title="Portfolio Personnel"
+                data-type="Projet personnel"
+                data-img="assets/hero-dev.png"
+                data-desc="Mon portfolio concu de zero : design systeme, animations, mode sombre/clair et radar de competences."
+                data-long="Ce portfolio est lui-meme un projet a part entiere. Concu sans framework, il integre un systeme de design coherent avec variables CSS, des animations particules sur canvas, un radar de competences interactif, un slider de projets, une modale de details, un formulaire de contact async et un toggle dark/light mode. Chaque detail a ete pense pour etre propre, performant et accessible."
+                data-tools="HTML,CSS,JavaScript,Canvas,Design System"
+                data-project="#"
+                data-code="https://github.com/HasibM06/portfolio"
+              >
+                <div class="slideImage">
+                  <img src="assets/hero-dev.png" alt="Capture du portfolio" />
+                  <div class="slideOverlay">
+                    <span class="slideOverlayTag">Projet perso</span>
+                    <span class="slideOverlayText">Design system, canvas, animations et dark mode</span>
+                  </div>
+                </div>
+
+                <div class="slideText">
+                  <span class="slideBadge">Projet personnel</span>
+                  <h3>Portfolio Dev</h3>
+                  <p>
+                    Ce portfolio lui-meme : concu sans framework, avec un design system CSS, des animations canvas et un toggle dark/light.
+                  </p>
+
+                  <div class="slideActions">
+                    <a class="btnGhost" href="https://github.com/HasibM06/portfolio" target="_blank" rel="noopener">Voir le code</a>
+                    <button class="btnGhost js-more" type="button">Voir +</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="projectModal" id="projectModal" aria-hidden="true">
+          <div class="modalBackdrop" id="modalBackdrop"></div>
+
+          <div class="modalCard" role="dialog" aria-modal="true" aria-label="Details du projet">
+            <button class="modalClose" id="modalClose" type="button" aria-label="Fermer">&times;</button>
+
+            <div class="modalMedia">
+              <img id="modalImg" src="" alt="" />
+            </div>
+
+            <div class="modalContent">
+              <div class="modalTop">
+                <h3 id="modalTitle">Titre</h3>
+                <span class="modalBadge" id="modalType">Type</span>
+              </div>
+
+              <p class="modalDesc" id="modalDesc"></p>
+              <p class="modalLong" id="modalLong"></p>
+
+              <div class="modalTools">
+                <h4>Technos</h4>
+                <div class="toolPills" id="modalTools"></div>
+              </div>
+
+              <div class="modalLinks">
+                <a class="btnPrimary" id="modalProject" href="#" target="_blank" rel="noopener">Voir le projet</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sliderNav">
+          <button id="prev" class="navBtn" type="button" aria-label="Projet precedent">&lsaquo;</button>
+          <div id="dots" class="dots" aria-label="Pagination projets"></div>
+          <button id="next" class="navBtn" type="button" aria-label="Projet suivant">&rsaquo;</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contactSection">
+      <h2 class="sectionHeading" data-reveal>Contact</h2>
+
+      <div class="contactGrid">
+        <div class="contactCard">
+          <h3>Coordonnees</h3>
+
+          <div class="contactLine">
+            <span class="contactLabel">Email</span>
+            <div class="contactValue">
+              <a class="contactLink" href="mailto:mohammad.hasib206@gmail.com">mohammad.hasib206@gmail.com</a>
+              <button class="copyBtn" type="button" data-copy="mohammad.hasib206@gmail.com">Copier</button>
+            </div>
+          </div>
+
+          <div class="contactLine">
+            <span class="contactLabel">Reseaux</span>
+            <div class="socialGrid">
+              <a class="socialBtn" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">
+                <span class="socialMark socialMarkLinkedIn" aria-hidden="true">in</span>
+                LinkedIn
+              </a>
+              <a class="socialBtn" href="https://github.com/HasibM06/portfolio" target="_blank" rel="noopener">
+                <img class="socialIcon" src="assets/github.png" alt="" />
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form id="contactForm" action="https://formspree.io/f/mnjbangn" method="POST" class="contactForm">
+          <div class="formRow">
+            <div class="field">
+              <label for="name">Nom</label>
+              <input type="text" id="name" name="name" placeholder="Votre nom" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+          </div>
+
+          <button type="submit" class="btnPrimary">Envoyer le message</button>
+          <p id="formHint" class="formHint" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="siteFooter">
+    <div class="footerInner">
+      <p>&copy; <span id="year">2026</span> Mohammad Hasib</p>
+      <a class="footerLink" href="mentions-legales.html">Mentions legales</a>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    const btnMobile = document.getElementById("themeBtnMobile");
+    const btnDesk = document.getElementById("themeBtn");
+    if (btnMobile && btnDesk) {
+      btnMobile.addEventListener("click", () => btnDesk.click());
+    }
+  </script>
+</body>
+</html>
